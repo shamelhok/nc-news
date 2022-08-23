@@ -2,17 +2,19 @@ body {
   text-align: center;
   background-color: bisque;
 }
-.title-card{
+.title-card {
   margin: 10px;
   padding: 5px;
   background-color: blanchedalmond;
   border: 1px black solid;
   border-radius: 5px;
 }
-.article-title{
+.article-title {
   font-size: 1.2em;
 }
-
+.topic-title {
+  text-transform: uppercase;
+}
 .App-header {
   background-color: #999b9e;
   min-height: 100vh;
@@ -27,9 +29,9 @@ body {
 .App-link {
   color: #61dafb;
 }
-#user-img{
-height: 1em;
+#user-img {
+  height: 1em;
 }
-#icon-img{
-height: 1em;
+#icon-img {
+  height: 1em;
 }
