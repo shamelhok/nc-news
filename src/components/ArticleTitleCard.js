@@ -16,64 +16,58 @@ export default function ArticleTitleCard(article) {
     if (votesByUser === 0) {
       event.target.style.backgroundColor = "green";
       setVotesByUser((current) => current + 1);
-      patchVotes(article.article_id, 1)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "";
-          setVotesByUser((current) => current - 1);
-        });
-    } else if (votesByUser>0) {
+      patchVotes(article.article_id, 1).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "";
+        setVotesByUser((current) => current - 1);
+      });
+    } else if (votesByUser > 0) {
       event.target.style.backgroundColor = "";
       setVotesByUser((current) => current - 1);
-      patchVotes(article.article_id, -1)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "green";
-          setVotesByUser((current) => current + 1);
-        });
-    } else if (votesByUser<0){
+      patchVotes(article.article_id, -1).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "green";
+        setVotesByUser((current) => current + 1);
+      });
+    } else if (votesByUser < 0) {
       event.target.style.backgroundColor = "green";
-      document.querySelector('.downvote').style.backgroundColor = "";
+      document.querySelector(".downvote").style.backgroundColor = "";
       setVotesByUser((current) => current + 2);
-      patchVotes(article.article_id, 2)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "";
-          document.querySelector('.downvote').style.backgroundColor = "red"
-          setVotesByUser((current) => current - 2);
-        });
+      patchVotes(article.article_id, 2).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "";
+        document.querySelector(".downvote").style.backgroundColor = "red";
+        setVotesByUser((current) => current - 2);
+      });
     }
   }
   function downVote(event) {
     if (votesByUser === 0) {
       event.target.style.backgroundColor = "red";
       setVotesByUser((current) => current - 1);
-      patchVotes(article.article_id, -1)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "";
-          setVotesByUser((current) => current + 1);
-        });
-    } else if (votesByUser<0) {
+      patchVotes(article.article_id, -1).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "";
+        setVotesByUser((current) => current + 1);
+      });
+    } else if (votesByUser < 0) {
       setVotesByUser((current) => current + 1);
       event.target.style.backgroundColor = "";
-      patchVotes(article.article_id, +1)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "red";
-          setVotesByUser((current) => current - 1);
-        });
-    } else if (votesByUser>0){
+      patchVotes(article.article_id, +1).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "red";
+        setVotesByUser((current) => current - 1);
+      });
+    } else if (votesByUser > 0) {
       event.target.style.backgroundColor = "red";
-      document.querySelector('.upvote').style.backgroundColor = "";
+      document.querySelector(".upvote").style.backgroundColor = "";
       setVotesByUser((current) => current - 2);
-      patchVotes(article.article_id, -2)
-        .catch((err) => {
-          console.log(err);
-          event.target.style.backgroundColor = "";
-          document.querySelector('.upvote').style.backgroundColor = "green"
-          setVotesByUser((current) => current + 2);
-        });
+      patchVotes(article.article_id, -2).catch((err) => {
+        console.log(err);
+        event.target.style.backgroundColor = "";
+        document.querySelector(".upvote").style.backgroundColor = "green";
+        setVotesByUser((current) => current + 2);
+      });
     }
   }
   return (
@@ -88,7 +82,7 @@ export default function ArticleTitleCard(article) {
       ) : (
         ""
       )}
-      <span className="votes">  {votes} vote(s) </span>
+      <span className="votes"> {votes} vote(s) </span>
       {onArticlePage ? (
         <button className="upvote" onClick={upVote}>
           {" "}
