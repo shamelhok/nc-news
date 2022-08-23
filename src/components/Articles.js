@@ -6,6 +6,10 @@ import ArticleTitleCard from "./ArticleTitleCard";
 export default function Articles() {
   const params = useParams();
   const { topic } = params;
+  let topicStr = 'Articles'
+  if(topic){
+    topicStr= topic+' Articles'
+  }
   const [currentArticles, setCurrentArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
@@ -32,6 +36,7 @@ export default function Articles() {
   return (
     <div>
       {isLoading ? <h2> Loading ... </h2> : ""}
+      <h2>{topicStr} </h2>
       <div>
         <button onClick={decreasePage}> previous page </button>
         page {currentPage}
@@ -39,7 +44,7 @@ export default function Articles() {
       </div>
       {currentArticles.map((article) => {
         return (
-          <Link key={article.title} to={"/articles/" + article.article_id}>
+          <Link key={article.title} to={"/article/" + article.article_id}>
             <ArticleTitleCard {...article} />
           </Link>
         );
