@@ -13,9 +13,9 @@ export default function Article() {
   }, [currentArticle]);
   return (
     <div>
-      article :
+      Article :
       <ArticleTitleCard {...currentArticle} />
-      {currentArticle.body}
+      <div className="article-body">{currentArticle.body}</div>
     </div>
   );
 }
