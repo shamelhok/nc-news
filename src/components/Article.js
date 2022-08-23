@@ -14,7 +14,7 @@ export default function Article() {
   return (
     <div>
       Article :
-      <ArticleTitleCard {...currentArticle} />
+      <ArticleTitleCard {...currentArticle} onArticlePage={true} />
       <div className="article-body">{currentArticle.body}</div>
     </div>
   );
