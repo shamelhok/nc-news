@@ -12,9 +12,11 @@ export default function Topics(){
 
     return (<div>
         {topics.map(topic=>{
-         return <h1 key ={topic.slug}>
-         <Link to="/articles" state={{topic:topic.slug}}> {topic.slug} </Link>
-         </h1> 
+         return <div key ={topic.slug}>
+         <Link to={"/articles/"+topic.slug} state={{topic:topic.slug}}> <h1>
+            {topic.slug}</h1>
+            {topic.description} </Link>
+         </div> 
         })}
  
      </div>)

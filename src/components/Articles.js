@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { fetchArticles } from "../api"
 import ArticleTitleCard from "./ArticleTitleCard"
 
-export default function Articles(props){
-    const {state} =useLocation()
-    let topic = undefined
-    if(state){topic =state.topic }
+export default function Articles(){
+    const params = useParams()
+    const {topic} = params
     const [currentArticles, setCurrentArticles]= useState([])
     const [currentPage,setCurrentPage]= useState(1)
     const [isLoading, setLoading]= useState(true)
