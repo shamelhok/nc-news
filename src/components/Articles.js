@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { fetchArticles } from "../api"
 import ArticleTitleCard from "./ArticleTitleCard"
 
-export default function Articles(){
+export default function Articles(props){
+    const {state} =useLocation()
+    let topic = undefined
+    if(state){topic =state.topic }
     const [currentArticles, setCurrentArticles]= useState([])
     const [currentPage,setCurrentPage]= useState(1)
     const [isLoading, setLoading]= useState(true)
@@ -17,7 +20,7 @@ export default function Articles(){
          setCurrentPage(page=> page+1)}
     }
     useEffect(()=>{
-        fetchArticles({p:currentPage}).then(body => {
+        fetchArticles({p:currentPage, topic}).then(body => {
             setCurrentArticles(body.articles)
         setLoading(false)})
         .catch(err=>console.log(err))}

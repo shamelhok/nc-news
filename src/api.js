@@ -18,4 +18,10 @@ function fetchArticleById(article_id){
     })
 }
 
-export {fetchArticles, fetchArticleById} 
+function fetchTopics(){
+    return fetch('https://nc-news-shamel.herokuapp.com/api/topics').then(res=>{
+        return res.json()
+    })
+}
+
+export {fetchArticles, fetchArticleById, fetchTopics} 

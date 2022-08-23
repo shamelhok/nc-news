@@ -6,6 +6,9 @@ export default function Home(){
        <h1>
         <Link to="/articles"> All articles </Link>
         </h1> 
+       <h1>
+        <Link to="/topics"> Topics </Link>
+        </h1> 
 
     </div>)
 }
