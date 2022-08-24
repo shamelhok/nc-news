@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Article from "./components/Article";
 import Articles from "./components/Articles";
+import Comments from "./components/Comments";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Topics from "./components/Topics";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/articles/:topic" element={<Articles />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/article/:article_id" element={<Article />} />
+            <Route path="/article/:article_id/comments" element={<Comments />} />
           </Routes>
         </LoggedInContext.Provider>
       </BrowserRouter>
