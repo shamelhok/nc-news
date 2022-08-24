@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { fetchComments } from "../api";
+import AddComment from "./AddComment";
 import ArticleTitleCard from "./ArticleTitleCard";
 import Votes from "./Votes";
 
@@ -12,7 +13,7 @@ export default  function Comments(){
     useEffect(()=>{
     fetchComments(article_id).then(body=>{
       setCommentArr(body.comments)
-  })},[article_id])
+  })},[commentArr])
      return (
     <div>
         <Link to={'/article/'+article_id}><ArticleTitleCard {...currentArticle}/>
@@ -32,7 +33,7 @@ export default  function Comments(){
           </div></div>)
         })}
       
-       
+       <AddComment article_id={article_id}/>
     </div>
   );
 }
