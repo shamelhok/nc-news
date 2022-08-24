@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { fetchArticleById, fetchComments } from "../api";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { fetchComments } from "../api";
 import ArticleTitleCard from "./ArticleTitleCard";
 import Votes from "./Votes";
 
 
 export default  function Comments(){
+    const currentArticle = useLocation().state
     const {article_id}=useParams()
     const [commentArr, setCommentArr]= useState([])
-    const [currentArticle, setCurrentArticle] = useState({});
-    useEffect(() => {
-      fetchArticleById(article_id).then(({ article }) => {
-        setCurrentArticle(article);
-      });
-    }, [currentArticle, article_id]);
     useEffect(()=>{
     fetchComments(article_id).then(body=>{
       setCommentArr(body.comments)
