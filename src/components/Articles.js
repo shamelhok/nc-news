@@ -6,9 +6,9 @@ import ArticleTitleCard from "./ArticleTitleCard";
 export default function Articles() {
   const params = useParams();
   const { topic } = params;
-  let topicStr = 'Articles'
-  if(topic){
-    topicStr= topic+' Articles'
+  let topicStr = "Articles";
+  if (topic) {
+    topicStr = topic + " Articles";
   }
   const [currentArticles, setCurrentArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
