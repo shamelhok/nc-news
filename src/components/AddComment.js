@@ -4,7 +4,7 @@ import { LoggedInContext } from "../App";
 
 export default function AddComment(props) {
     const {loggedIn} = useContext(LoggedInContext)
-    const {article_id}= props
+    const {article_id, reloadComments}= props
     const [submitStr, setSubmitStr]=useState('Submit')
   function handleSubmit(event){
     event.preventDefault()
@@ -13,12 +13,13 @@ export default function AddComment(props) {
     setSubmitStr('Posting Comment...')
     postComment(article_id,loggedIn.username, newComment
         ).then(body=>{
-            console.log(body);
             setSubmitStr('Comment posted!')
+            setTimeout(setSubmitStr,3000,'Submit')
             if(!body.hasOwnProperty('new_comment')){
                 event.target['new-comment'].value= newComment
             setSubmitStr('Post failed, try again')
             }
+            reloadComments(Date.now())
         }).catch(err=>{
             console.log(err)
         })
