@@ -14,7 +14,7 @@ export default function Article() {
       setCurrentArticle(article);
       setLoading(false)
     });
-  }, [currentArticle, article_id]);
+  }, [  article_id]);
 
   return (
     <div>

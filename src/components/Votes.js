@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { patchVotes } from "../api";
+import { fetchArticleById, patchVotes } from "../api";
 
 export default function Votes(article) {
   const [votes, setVotes] = useState(article.votes);
+  const {article_id}=article
   const [votesByUser, setVotesByUser] = useState(0);
   useEffect(() => {
-    setVotes(article.votes);
-  }, [article]);
+    if(article_id){setVotes(article.votes+ votesByUser)}
+  }, [votes, article_id, votesByUser]);
   const { onArticlePage } = article;
   function upVote(event) {
     if (votesByUser === 0) {
@@ -75,7 +76,7 @@ export default function Votes(article) {
           bad{" "}
         </button>
       ) : (
-        ""
+        null
       )}
       <span className="votes"> {votes} vote(s) </span>
       {onArticlePage ? (
@@ -84,7 +85,7 @@ export default function Votes(article) {
           good{" "}
         </button>
       ) : (
-        ""
+        null
       )}
     </span>
   );

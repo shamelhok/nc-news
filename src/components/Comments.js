@@ -12,12 +12,12 @@ export default  function Comments(){
     const {article_id}=useParams()
     const [commentArr, setCommentArr]= useState([])
     const {loggedIn}=useContext(LoggedInContext)
+    const [updateComments, reloadComments] = useState(0)
     useEffect(()=>{
     fetchComments(article_id).then(body=>{
       setCommentArr(body.comments)
       setLoading(false)
-  })},[commentArr])
-
+  })},[isLoading, updateComments])
      return (
     <div>
         {isLoading ? <h2> Loading ... </h2> : ""}
@@ -33,11 +33,13 @@ export default  function Comments(){
             {comment.body} <br/>
           {comment.author} {dateCreated + "  "}
           <Votes {...comment} />
-          {loggedIn.name ===comment.author? <DeleteComment comment_id={comment.comment_id}/> :null}
+          {loggedIn.name ===comment.author? 
+          <DeleteComment comment_id={comment.comment_id} reloadComments={reloadComments}/> 
+          :null}
           </div></div>)
         })}
       
-       <AddComment article_id={article_id}/>
+       <AddComment article_id={article_id} reloadComments={reloadComments}/>
     </div>
   );
 }
