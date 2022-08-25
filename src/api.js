@@ -55,17 +55,23 @@ function patchVotes(article_id, voteChange) {
     return res.json();
   });
 }
-function fetchComments(article_id){
-  return fetch('https://nc-news-shamel.herokuapp.com/api/articles/'+article_id+'/comments')
-  .then((res)=>res.json())
-}
-function postComment(article_id, username,body) {
+function fetchComments(article_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles/" + article_id+'/comments',
+    "https://nc-news-shamel.herokuapp.com/api/articles/" +
+      article_id +
+      "/comments"
+  ).then((res) => res.json());
+}
+function postComment(article_id, username, body) {
+  return fetch(
+    "https://nc-news-shamel.herokuapp.com/api/articles/" +
+      article_id +
+      "/comments",
     {
       method: "POST",
       body: JSON.stringify({
-        username,body
+        username,
+        body,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -75,4 +81,18 @@ function postComment(article_id, username,body) {
     return res.json();
   });
 }
-export { fetchArticles, fetchArticleById, fetchTopics, patchVotes , fetchComments, postComment};
+function removeComment(comment_id) {
+  return fetch(
+    "https://nc-news-shamel.herokuapp.com/api/comments/" + comment_id,
+    { method: "DELETE" }
+  )
+}
+export {
+  removeComment,
+  fetchArticles,
+  fetchArticleById,
+  fetchTopics,
+  patchVotes,
+  fetchComments,
+  postComment,
+};

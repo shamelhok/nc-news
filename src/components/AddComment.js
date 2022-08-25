@@ -13,7 +13,6 @@ export default function AddComment(props) {
     setSubmitStr('Posting Comment...')
     postComment(article_id,loggedIn.username, newComment
         ).then(body=>{
-            console.log(body);
             setSubmitStr('Comment posted!')
             if(!body.hasOwnProperty('new_comment')){
                 event.target['new-comment'].value= newComment

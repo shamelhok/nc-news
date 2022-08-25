@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoggedInContext } from "../App";
+import Nav from "./Nav";
 
 export default function Header() {
   const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
-
+  const [openNav,setOpenNav]= useState(false)
   return (
     <div id="header">
       <h1>
@@ -17,8 +18,9 @@ export default function Header() {
           />
           NC NEWS{" "}
         </Link>
-        <img id="user-img" src={loggedIn.avatar_url} alt="logged in user" />
+        <img onClick={()=>setOpenNav(current=>!current)} id="user-img" src={loggedIn.avatar_url} alt="logged in user" />
       </h1>
+      {openNav?<Nav/>:null}
     </div>
   );
 }
