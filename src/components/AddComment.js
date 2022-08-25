@@ -14,11 +14,12 @@ export default function AddComment(props) {
     postComment(article_id,loggedIn.username, newComment
         ).then(body=>{
             setSubmitStr('Comment posted!')
+            setTimeout(setSubmitStr,3000,'Submit')
             if(!body.hasOwnProperty('new_comment')){
                 event.target['new-comment'].value= newComment
             setSubmitStr('Post failed, try again')
             }
-            reloadComments()
+            reloadComments(Date.now())
         }).catch(err=>{
             console.log(err)
         })
