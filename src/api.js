@@ -39,9 +39,9 @@ function fetchTopics() {
     }
   );
 }
-function patchVotes(article_id, voteChange) {
+function patchVotes(article_id, voteChange,comment_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles/" + article_id,
+    "https://nc-news-shamel.herokuapp.com/api/"+(article_id?`articles/${article_id}`:`comments/${comment_id}`),
     {
       method: "PATCH",
       body: JSON.stringify({

@@ -14,11 +14,11 @@ export default function Header() {
           <img
             id="icon-img"
             src="https://cdn3.iconfinder.com/data/icons/communication-2-2/256/Newspaper-512.png"
-            alt=""
+            alt="news-icon"
           />
           NC NEWS{" "}
         </Link>
-        <img onClick={()=>setOpenNav(current=>!current)} id="user-img" src={loggedIn.avatar_url} alt="logged in user" />
+        <img onClick={()=>setOpenNav(current=>!current)} id="user-img" src={loggedIn.avatar_url} alt="logged in user icon" />
       </h1>
       {openNav?<Nav/>:null}
     </div>
