@@ -55,4 +55,8 @@ function patchVotes(article_id, voteChange) {
     return res.json();
   });
 }
-export { fetchArticles, fetchArticleById, fetchTopics, patchVotes };
+function fetchComments(article_id){
+  return fetch('https://nc-news-shamel.herokuapp.com/api/articles/'+article_id+'/comments')
+  .then((res)=>res.json())
+}
+export { fetchArticles, fetchArticleById, fetchTopics, patchVotes , fetchComments};

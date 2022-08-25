@@ -10,7 +10,7 @@ export default function Article() {
     fetchArticleById(article_id).then(({ article }) => {
       setCurrentArticle(article);
     });
-  }, [currentArticle]);
+  }, [currentArticle, article_id]);
   return (
     <div>
         <h2 className="home-card">
@@ -19,6 +19,7 @@ export default function Article() {
       Article :
       <ArticleTitleCard {...currentArticle} onArticlePage={true} />
       <div className="article-body">{currentArticle.body}</div>
+      <Link to={'/article/'+article_id+'/comments'} state ={currentArticle}><div>Comments</div></Link>  
     </div>
   );
 }
