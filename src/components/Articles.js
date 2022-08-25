@@ -15,6 +15,7 @@ export default function Articles() {
   const [isLoading, setLoading] = useState(true);
   function decreasePage() {
     if (currentPage > 1) {
+      setLoading(true);
       setCurrentPage((currentPage) => currentPage - 1);
     }
   }

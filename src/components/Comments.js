@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchComments } from "../api";
 import AddComment from "./AddComment";
 import ArticleTitleCard from "./ArticleTitleCard";
@@ -7,18 +7,20 @@ import Votes from "./Votes";
 
 
 export default  function Comments(){
-    const currentArticle = useLocation().state
+    const [isLoading, setLoading] = useState(true)
     const {article_id}=useParams()
     const [commentArr, setCommentArr]= useState([])
     useEffect(()=>{
     fetchComments(article_id).then(body=>{
       setCommentArr(body.comments)
+      setLoading(false)
   })},[commentArr])
      return (
     <div>
-        <Link to={'/article/'+article_id}><ArticleTitleCard {...currentArticle}/>
-        </Link>
-        Comments:
+        {/* <Link to={'/article/'+article_id}><ArticleTitleCard {...currentArticle}/>
+        </Link> */}
+        {isLoading ? <h2> Loading ... </h2> : ""}
+        <h2> Comments: </h2>
         {commentArr.map(comment=>{
           let dateCreated = "";
           try {
