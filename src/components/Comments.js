@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { fetchComments } from "../api";
 import AddComment from "./AddComment";
-import ArticleTitleCard from "./ArticleTitleCard";
 import Votes from "./Votes";
 
 
