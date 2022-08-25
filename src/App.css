@@ -9,6 +9,9 @@ body {
   border: 1px black solid;
   border-radius: 5px;
 }
+a{
+  text-decoration: none;
+}
 .article-body {
   margin: 10px;
   padding: 10px;

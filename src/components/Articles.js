@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchArticles } from "../api";
 import ArticleTitleCard from "./ArticleTitleCard";
+import SortBy from "./SortBy";
 
 export default function Articles() {
   const params = useParams();
@@ -13,6 +14,8 @@ export default function Articles() {
   const [currentArticles, setCurrentArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
+  const [sort_by, setSortBy] = useState(undefined);
+  const [order, setOrder] = useState(undefined);
   function decreasePage() {
     if (currentPage > 1) {
       setLoading(true);
@@ -26,22 +29,23 @@ export default function Articles() {
     }
   }
   useEffect(() => {
-    fetchArticles({ p: currentPage, topic })
+    setLoading(true)
+    fetchArticles({ p: currentPage, topic, sort_by, order })
       .then((body) => {
         setCurrentArticles(body.articles);
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [currentArticles]);
+  }, [currentPage, topic, sort_by, order]);
 
   return (
     <div>
       {isLoading ? <h2> Loading ... </h2> : ""}
       <h2>{topicStr} </h2>
+      <SortBy setSortBy={setSortBy} setOrder={setOrder} />
       <div>
-        <button onClick={decreasePage}> previous page </button>
-        page {currentPage}
-        <button onClick={increasePage}> next page </button>
+        <button onClick={decreasePage}> previous page </button> page{" "}
+        {currentPage} <button onClick={increasePage}> next page </button>
       </div>
       {currentArticles.map((article) => {
         return (
