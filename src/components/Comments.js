@@ -32,7 +32,7 @@ export default  function Comments(){
           <div className="article-body">
             {comment.body} <br/>
           {comment.author} {dateCreated + "  "}
-          <Votes {...comment} />
+          <Votes {...comment} onArticlePage={true}/>
           {loggedIn.name ===comment.author? 
           <DeleteComment comment_id={comment.comment_id} reloadComments={reloadComments}/> 
           :null}
