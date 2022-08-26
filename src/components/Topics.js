@@ -17,12 +17,11 @@ export default function Topics() {
       {isLoading ? <h2> Loading ... </h2> : ""}
       {topics.map((topic) => {
         return (
-          <div key={topic.slug} className='title-card'>
-            <Link to={"/articles/" + topic.slug} state={{ topic: topic.slug }}>
+        <Link to={"/articles/" + topic.slug} state={{ topic: topic.slug }}>
+          <div key={topic.slug} className='title-card'>          
               <h3 className="topic-title">{topic.slug}</h3>
               {topic.description}{" "}
-            </Link>
-          </div>
+          </div></Link>
         );
       })}
     </div>

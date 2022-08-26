@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div>
+      <Link to="/articles"><h2 className="title-card">
+         All articles 
+      </h2></Link>
+      <Link to="/topics">
       <h2 className="title-card">
-        <Link to="/articles"> All articles </Link>
-      </h2>
+         Topics 
+      </h2></Link>
+      <Link to="/users">
       <h2 className="title-card">
-        <Link to="/topics"> Topics </Link>
-      </h2>
-      <h2 className="title-card">
-        <Link to="/users"> Users </Link>
-      </h2>
+         Users 
+      </h2></Link>
     </div>
   );
 }
