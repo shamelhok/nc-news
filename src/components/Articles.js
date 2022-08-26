@@ -48,13 +48,15 @@ export default function Articles() {
   }, [currentPage, topic, sort_by, order]);
 
   if(!isTopicValid){
-    return<h2>Invalid topic</h2>
+    return<><h2>Invalid topic</h2>
+    <h2> <Link to={'/topics'}> View Topics </Link></h2></>
   }
   return (
     <div>
       {isLoading ? <h2> Loading ... </h2> : ""}
       <h2>{topicStr} </h2>
       <SortBy setSortBy={setSortBy} setOrder={setOrder} />
+      <br/>
       <div>
         <button onClick={decreasePage}> previous page </button> page{" "}
         {currentPage} <button onClick={increasePage}> next page </button>

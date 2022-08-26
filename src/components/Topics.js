@@ -8,18 +8,18 @@ export default function Topics() {
   useEffect(() => {
     fetchTopics().then((body) => {
       setTopics(body.topics);
-      setLoading(false)
+      setLoading(false);
     });
   }, []);
 
   return (
     <div>
-       {isLoading ? <h2> Loading ... </h2> : ""}
+      {isLoading ? <h2> Loading ... </h2> : ""}
       {topics.map((topic) => {
         return (
-          <div key={topic.slug}>
+          <div key={topic.slug} className='title-card'>
             <Link to={"/articles/" + topic.slug} state={{ topic: topic.slug }}>
-              <h2 className="topic-title">{topic.slug}</h2>
+              <h3 className="topic-title">{topic.slug}</h3>
               {topic.description}{" "}
             </Link>
           </div>

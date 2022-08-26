@@ -12,9 +12,9 @@ export default function Users(){
     },[loggedIn])
     return <div>
         {userArr.map(user=>{
-            return <div onClick={()=>setLoggedIn(user)} key ={user.username}>
-                {user.username}
-                {user.name}
+            return <div onClick={()=>setLoggedIn(user)} key ={user.username} className='title-card'>
+                {user.name}<br/>
+                {user.username} <br/>
                 <img className="user-img" src={user.avatar_url} alt='user avatar'/>       
                 </div>
         })}

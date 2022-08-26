@@ -38,7 +38,6 @@ export default function AddComment(props) {
           className="input-box"
           required
         ></input>
-        <br />
         <button type="submit"> {submitStr} </button>
       </form>
     </div>
