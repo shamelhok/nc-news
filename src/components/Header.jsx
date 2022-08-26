@@ -13,7 +13,7 @@ export default function Header() {
         <Link to="/">
           <img
             id="icon-img"
-            src="https://cdn3.iconfinder.com/data/icons/communication-2-2/256/Newspaper-512.png"
+            src={"https://cdn3.iconfinder.com/data/icons/communication-2-2/256/Newspaper-512.png"}
             alt="news-icon"
           />
           NC NEWS{" "}
@@ -21,7 +21,7 @@ export default function Header() {
         <img
           onClick={() => setOpenNav((current) => !current)}
           id="user-img"
-          src={loggedIn.avatar_url}
+          src={loggedIn.avatar_url||'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'}
           alt="user-img"
         />
       </h1>
