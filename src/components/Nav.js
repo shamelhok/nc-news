@@ -5,6 +5,7 @@ export default function Nav() {
     <div>
       <Link to="/articles"> All articles </Link>
       <Link to="/topics"> Topics </Link>
+      <Link to="/users"> Users </Link>
     </div>
   );
 }

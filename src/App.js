@@ -8,16 +8,12 @@ import Comments from "./components/Comments";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Topics from "./components/Topics";
+import Users from "./components/Users";
 
 export const LoggedInContext = createContext();
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState({
-    username: "tickle122",
-    name: "Tom Tickle",
-    avatar_url:
-      "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953",
-  });
+  const [loggedIn, setLoggedIn] = useState({});
 
   return (
     <div className="App">
@@ -34,6 +30,7 @@ function App() {
               path="/article/:article_id/comments"
               element={<Comments />}
             />
+            <Route path="/users" element={<Users />} />
             <Route path="*" element={<BadUrl />} />
           </Routes>
         </LoggedInContext.Provider>

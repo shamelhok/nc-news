@@ -22,7 +22,7 @@ export default function Header() {
           onClick={() => setOpenNav((current) => !current)}
           id="user-img"
           src={loggedIn.avatar_url}
-          alt="logged in user icon"
+          alt="user-img"
         />
       </h1>
       {openNav ? <Nav /> : null}
