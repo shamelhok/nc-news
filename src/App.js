@@ -30,7 +30,10 @@ function App() {
             <Route path="/articles/:topic" element={<Articles />} />
             <Route path="/topics" element={<Topics />} />
             <Route path="/article/:article_id" element={<Article />} />
-            <Route path="/article/:article_id/comments" element={<Comments />} />
+            <Route
+              path="/article/:article_id/comments"
+              element={<Comments />}
+            />
             <Route path="*" element={<BadUrl />} />
           </Routes>
         </LoggedInContext.Provider>

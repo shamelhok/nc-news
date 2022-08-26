@@ -8,10 +8,8 @@ export default function ArticleTitleCard(article) {
   return (
     <div className="title-card">
       <div className="article-title">{article.title}</div>
-      {article.author} {' '}
-      {dateCreated}{' '}
-      <Votes {...article} />
-      {' '}{article.comment_count} comments
+      {article.author} {dateCreated} <Votes {...article} />{" "}
+      {article.comment_count} comments
     </div>
   );
 }

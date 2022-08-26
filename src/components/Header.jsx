@@ -4,8 +4,8 @@ import { LoggedInContext } from "../App";
 import Nav from "./Nav";
 
 export default function Header() {
-  const { loggedIn, setLoggedIn } = useContext(LoggedInContext);
-  const [openNav,setOpenNav]= useState(false)
+  const { loggedIn } = useContext(LoggedInContext);
+  const [openNav, setOpenNav] = useState(false);
   return (
     <div id="header">
       <h1>
@@ -18,9 +18,14 @@ export default function Header() {
           />
           NC NEWS{" "}
         </Link>
-        <img onClick={()=>setOpenNav(current=>!current)} id="user-img" src={loggedIn.avatar_url} alt="logged in user icon" />
+        <img
+          onClick={() => setOpenNav((current) => !current)}
+          id="user-img"
+          src={loggedIn.avatar_url}
+          alt="logged in user icon"
+        />
       </h1>
-      {openNav?<Nav/>:null}
+      {openNav ? <Nav /> : null}
     </div>
   );
 }

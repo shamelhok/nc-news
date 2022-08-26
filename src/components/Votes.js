@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import { fetchArticleById, patchVotes } from "../api";
+import { patchVotes } from "../api";
 
 export default function Votes(article) {
   const [votes, setVotes] = useState(article.votes);
-  const {article_id, onArticlePage, comment_id}=article
+  const { article_id, onArticlePage, comment_id } = article;
   const [votesByUser, setVotesByUser] = useState(0);
   useEffect(() => {
-    if(article_id||comment_id){setVotes(article.votes+ votesByUser)}
-  }, [votes, article_id, votesByUser]);
+    if (article_id || comment_id) {
+      setVotes(article.votes + votesByUser);
+    }
+  }, [votes, article_id, votesByUser, article.votes, comment_id]);
   function upVote(event) {
     if (votesByUser === 0) {
       event.target.style.backgroundColor = "green";
       setVotesByUser((current) => current + 1);
-      patchVotes(article_id, 1,comment_id).catch((err) => {
+      patchVotes(article_id, 1, comment_id).catch((err) => {
         console.log(err);
         event.target.style.backgroundColor = "";
         setVotesByUser((current) => current - 1);
@@ -70,22 +72,18 @@ export default function Votes(article) {
   return (
     <span>
       {onArticlePage ? (
-        <button className="downvote"  onClick={downVote}>
+        <button className="downvote" onClick={downVote}>
           {" "}
           bad{" "}
         </button>
-      ) : (
-        null
-      )}
+      ) : null}
       <span className="votes"> {votes} vote(s) </span>
       {onArticlePage ? (
         <button className="upvote" onClick={upVote}>
           {" "}
           good{" "}
         </button>
-      ) : (
-        null
-      )}
+      ) : null}
     </span>
   );
 }

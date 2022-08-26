@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchArticles } from "../api";
+import { fetchArticles, fetchTopics } from "../api";
 import ArticleTitleCard from "./ArticleTitleCard";
 import SortBy from "./SortBy";
 
@@ -16,6 +16,7 @@ export default function Articles() {
   const [isLoading, setLoading] = useState(true);
   const [sort_by, setSortBy] = useState(undefined);
   const [order, setOrder] = useState(undefined);
+  const [isTopicValid,setISTopicValid]= useState(true)
   function decreasePage() {
     if (currentPage > 1) {
       setLoading(true);
@@ -29,15 +30,26 @@ export default function Articles() {
     }
   }
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     fetchArticles({ p: currentPage, topic, sort_by, order })
       .then((body) => {
         setCurrentArticles(body.articles);
+        if(body.articles.length===0){
+          fetchTopics().then(({topics})=>{
+            const topicNames = topics.map(item=>item.slug)
+            if(!topicNames.includes(topic)){
+              setISTopicValid(false)
+            }
+          })
+        }
         setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [currentPage, topic, sort_by, order]);
 
+  if(!isTopicValid){
+    return<h2>Invalid topic</h2>
+  }
   return (
     <div>
       {isLoading ? <h2> Loading ... </h2> : ""}
