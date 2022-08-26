@@ -8,6 +8,9 @@ export default function AddComment(props) {
   const [submitStr, setSubmitStr] = useState("Submit");
   function handleSubmit(event) {
     event.preventDefault();
+    if(!loggedIn.username){
+      setSubmitStr(' Please Log In! ')
+    }else{
     let newComment = event.target["new-comment"].value;
     event.target["new-comment"].value = "";
     setSubmitStr("Posting Comment...");
@@ -24,6 +27,7 @@ export default function AddComment(props) {
       .catch((err) => {
         console.log(err);
       });
+    }
   }
   return (
     <div>

@@ -87,7 +87,15 @@ function removeComment(comment_id) {
     { method: "DELETE" }
   )
 }
+function fetchUsers(){
+  return fetch("https://nc-news-shamel.herokuapp.com/api/users").then(
+    (res) => {
+      return res.json();
+    }
+  );
+}
 export {
+  fetchUsers,
   removeComment,
   fetchArticles,
   fetchArticleById,
