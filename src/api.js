@@ -81,6 +81,24 @@ function postComment(article_id, username, body) {
     return res.json();
   });
 }
+function postUser( username, name, avatar_url) {
+  return fetch(
+    "https://nc-news-shamel.herokuapp.com/api/users",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        name,
+        avatar_url
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  ).then((res) => {
+    return res.json();
+  });
+}
 function removeComment(comment_id) {
   return fetch(
     "https://nc-news-shamel.herokuapp.com/api/comments/" + comment_id,
@@ -103,4 +121,5 @@ export {
   patchVotes,
   fetchComments,
   postComment,
+  postUser
 };
