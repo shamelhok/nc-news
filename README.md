@@ -1,6 +1,8 @@
 # NC News front end project
 This front end project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and is part of my first full-stack project, together with [my first back end project](https://github.com/shamelhok/nc-news-be).
 
+To view and test the code, fork this repo, `git clone` the new fork, then `cd` into the directory and then run `npm install`.
+
 ## Available Scripts
 
 In the project directory, you can run:
