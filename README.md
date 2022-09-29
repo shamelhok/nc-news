@@ -5,8 +5,6 @@ This front end project was bootstrapped with [Create React App](https://github.c
 
 https://nc-news-shamel.netlify.app/
 
-<a href="https://nc-news-shamel.netlify.app/" target="_blank" rel="noopener">Open in new tab</a>
-
 ## Available Scripts
 
 To view and test the code, fork this repo, `git clone` the new fork, then `cd` into the directory and then run `npm install`.
