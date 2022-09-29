@@ -4,7 +4,8 @@ This front end project was bootstrapped with [Create React App](https://github.c
 ## Hosted Website
 
 https://nc-news-shamel.netlify.app/
-<a href="https://nc-news-shamel.netlify.app/" target="_blank">Open in new tab</a>
+
+<a href="https://nc-news-shamel.netlify.app/" target="_blank" rel="noopener">Open in new tab</a>
 
 ## Available Scripts
 
