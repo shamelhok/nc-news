@@ -1,3 +1,4 @@
+const backEndHost= "https://nc-news-api-rwfo.onrender.com"
 function fetchArticles(obj = {}) {
   let { topic, sort_by, order, limit, p } = obj;
   if (!topic) {
@@ -10,7 +11,7 @@ function fetchArticles(obj = {}) {
   if (!limit) limit = "";
   if (!p) p = "";
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles?sort_by=" +
+    backEndHost+"/api/articles?sort_by=" +
       sort_by +
       "&order=" +
       order +
@@ -26,14 +27,14 @@ function fetchArticles(obj = {}) {
 
 function fetchArticleById(article_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles/" + article_id
+    backEndHost+"/api/articles/" + article_id
   ).then((res) => {
     return res.json();
   });
 }
 
 function fetchTopics() {
-  return fetch("https://nc-news-shamel.herokuapp.com/api/topics").then(
+  return fetch(backEndHost+"/api/topics").then(
     (res) => {
       return res.json();
     }
@@ -41,7 +42,7 @@ function fetchTopics() {
 }
 function patchVotes(article_id, voteChange,comment_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/"+(article_id?`articles/${article_id}`:`comments/${comment_id}`),
+    backEndHost+"/api/"+(article_id?`articles/${article_id}`:`comments/${comment_id}`),
     {
       method: "PATCH",
       body: JSON.stringify({
@@ -57,14 +58,14 @@ function patchVotes(article_id, voteChange,comment_id) {
 }
 function fetchComments(article_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles/" +
+    backEndHost+"/api/articles/" +
       article_id +
       "/comments"
   ).then((res) => res.json());
 }
 function postComment(article_id, username, body) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/articles/" +
+    backEndHost+"/api/articles/" +
       article_id +
       "/comments",
     {
@@ -83,7 +84,7 @@ function postComment(article_id, username, body) {
 }
 function postUser( username, name, avatar_url) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/users",
+    backEndHost+"/api/users",
     {
       method: "POST",
       body: JSON.stringify({
@@ -101,12 +102,12 @@ function postUser( username, name, avatar_url) {
 }
 function removeComment(comment_id) {
   return fetch(
-    "https://nc-news-shamel.herokuapp.com/api/comments/" + comment_id,
+    backEndHost+"/api/comments/" + comment_id,
     { method: "DELETE" }
   )
 }
 function fetchUsers(){
-  return fetch("https://nc-news-shamel.herokuapp.com/api/users").then(
+  return fetch(backEndHost+"/api/users").then(
     (res) => {
       return res.json();
     }
