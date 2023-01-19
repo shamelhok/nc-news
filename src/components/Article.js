@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link,  useParams } from "react-router-dom";
 import { fetchArticleById } from "../api";
 import ArticleTitleCard from "./ArticleTitleCard";
-import BadUrl from "./BadUrl";
+// import BadUrl from "./BadUrl";
 import Comments from "./Comments";
 
 export default function Article() {

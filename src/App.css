@@ -50,15 +50,29 @@ a{
   color: #61dafb;
 }
 #user-img {
-  height: 1.2em;
+  height: 32px;
 }
 .user-img {
   height: 2em;
 }
 #icon-img {
-  height: 1.2em;
+  height: 32px;
 }
 
 .green{
   background-color: green;
+}
+
+#header{
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 600px ) {
+  body{
+    padding-left: calc( 0.4 * (100% - 600px));
+    padding-right: calc( 0.4 * (100% - 600px));
+  }
 }
