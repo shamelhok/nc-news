@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchTopics } from "../api";
+import Loading from "./Loading";
 
 export default function Topics() {
   const [topics, setTopics] = useState([]);
@@ -14,11 +15,11 @@ export default function Topics() {
 
   return (
     <div>
-      {isLoading ? <h2> Loading ... </h2> : ""}
+      {isLoading ?<Loading/> : ""}
       {topics.map((topic) => {
         return (
-        <Link to={"/articles/" + topic.slug} state={{ topic: topic.slug }}>
-          <div key={topic.slug} className='title-card'>          
+        <Link to={"/articles/" + topic.slug} key={topic.slug} state={{ topic: topic.slug }}>
+          <div className='title-card'>          
               <h3 className="topic-title">{topic.slug}</h3>
               {topic.description}{" "}
           </div></Link>

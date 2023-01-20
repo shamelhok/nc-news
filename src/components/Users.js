@@ -1,13 +1,18 @@
 import { useContext, useEffect, useState } from "react"
 import { fetchUsers, postUser } from "../api"
 import { LoggedInContext } from "../App"
+import Loading from "./Loading"
 
 export default function Users(){
     const{ loggedIn, setLoggedIn}=useContext(LoggedInContext)
+    const [isLoading, setLoading] = useState(true);
     const [userArr,setUserArr]= useState([])
     useEffect(()=>{
+      setLoading(true)
         fetchUsers().then(body=>{
             setUserArr(body.users)
+        }).then(()=>{
+          setLoading(false)
         })
     },[loggedIn])
     function handleSubmit(event) {
@@ -30,6 +35,7 @@ export default function Users(){
         
       }
     return <div>
+      {isLoading ?<Loading/> : ""}
         {userArr.map(user=>{
             return <div onClick={()=>setLoggedIn(user)} key ={user.username} className='title-card'>
                 {user.name}<br/>

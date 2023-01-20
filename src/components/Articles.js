@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchArticles, fetchTopics } from "../api";
 import ArticleTitleCard from "./ArticleTitleCard";
+import Loading from "./Loading";
 import SortBy from "./SortBy";
 
 export default function Articles() {
@@ -53,7 +54,7 @@ export default function Articles() {
   }
   return (
     <div>
-      {isLoading ? <h2> Loading ... </h2> : ""}
+      {isLoading ?<Loading/> : ""}
       <h2>{topicStr} </h2>
       <SortBy setSortBy={setSortBy} setOrder={setOrder} />
       <br/>
